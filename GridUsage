@@ -57,7 +57,6 @@ trigger:
   - platform: time_pattern
     minutes: "/1"
 
-condition:
 action:
   - choose:
     - alias: "Never skipping"
