@@ -36,7 +36,7 @@ variables:
     {%- set ns = namespace(devices=[]) %}
     {%- for device_id in device_ids %}
       {%- set device=get_device_topic(device_id)|replace(' ','') %}
-      {% set ns.devices = ns.devices + [ device ~ '/custom/solar_power'] %}
+      {% set ns.devices = ns.devices + [ device ~ '/custom/grid_power'] %}
     {%- endfor %}
     {{ ns.devices }}
   power_sensor: !input grid_energy
