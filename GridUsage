@@ -49,7 +49,7 @@ variables:
     {%- if power_level > 0 %}{{"#04FE04"}}{%- endif %}
     {%- if power_level <= 0 %}{{"#FF4E1A"}}{%- endif %}
   power_level_text: >-
-    {%- if power_level > 1000  %}{{ ((power_level | float(default=0)) / 1000) | round(1)}} kW{%- else %}{{power_level | round(0)}} W{%- endif %}
+    {%- if power_level > 1000  %}{{ ((power_level | float(default=0)) / 1000) | round(1)}} MW{%- else %}{{power_level | round(1)}} kW{%- endif %}
   payload: >-
     {"icon":"{{ power_level_icon }}", "text": "{{ power_level_text }}",  "color": "{{ power_level_color }}"}
 
