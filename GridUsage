@@ -58,16 +58,14 @@ trigger:
     minutes: "/1"
 
 action:
-  - choose:
-    - alias: "Never skipping"
-      sequence:
-      - repeat:
-          for_each: "{{ devices_topics }}"
-          sequence:
-            - service: mqtt.publish
-              data:
-                qos: 0
-                retain: false
-                topic: "{{ repeat.item }}"
-                payload: >
-                  {{ payload }}
+  sequence:
+    - repeat:
+        for_each: "{{ devices_topics }}"
+        sequence:
+          - service: mqtt.publish
+            data:
+              qos: 0
+              retain: false
+              topic: "{{ repeat.item }}"
+              payload: >
+                {{ payload }}
