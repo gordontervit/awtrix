@@ -41,13 +41,15 @@ variables:
     {{ ns.devices }}
   power_sensor: !input grid_energy
   power_level: >-
-    {{ states[power_sensor].state | float(0) * 1000 | abs }}
+    {{ states[power_sensor].state | float(0) * 1000 }}
   power_level_icon: >-
     {%- if power_level > 0 %}{{71135}}{%- endif %}
     {%- if power_level <= 0 %}{{71134}}{%- endif %}
   power_level_color: >-
     {%- if power_level > 0 %}{{"#04FE04"}}{%- endif %}
     {%- if power_level <= 0 %}{{"#FF4E1A"}}{%- endif %}
+  power_level: >-
+    {{ power_level | abs() }}
   power_level_text: >-
     {%- if power_level > 1000  %}{{ ((power_level | float(default=0)) / 1000) | round(1)}} kW{%- else %}{{power_level | round(0)}} W{%- endif %}
   payload: >-
