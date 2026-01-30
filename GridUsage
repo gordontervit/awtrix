@@ -41,7 +41,7 @@ variables:
     {{ ns.devices }}
   power_sensor: !input grid_energy
   power_level: >-
-    {{ states[power_sensor].state * 1000 | int(0) | abs }}
+    {{ states[power_sensor].state | float(0) * 1000 | abs }}
   power_level_icon: >-
     {%- if power_level > 0 %}{{71135}}{%- endif %}
     {%- if power_level <= 0 %}{{71134}}{%- endif %}
